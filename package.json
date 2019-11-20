@@ -1,6 +1,6 @@
 {
   "name": "serverless-tscpaths",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Replace absolute paths to relative paths after typescript compilation",
   "main": "index.js",
   "license": "MIT",
