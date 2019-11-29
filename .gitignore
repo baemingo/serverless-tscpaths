@@ -83,3 +83,4 @@ lib
 .next
 
 index.js
+index.d.ts
