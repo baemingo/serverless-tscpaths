@@ -1,6 +1,6 @@
 {
   "name": "serverless-tscpaths",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Replace absolute paths to relative paths after typescript compilation",
   "main": "index.js",
   "license": "MIT",
@@ -16,7 +16,7 @@
     "compilation",
     "tsc"
   ],
-  "engines" : { "node" : "^10.0.0" },
+  "engines" : { "node" : ">=10.0.0" },
   "scripts": {
     "build": "tsc -p ./tsconfig.json"
   },
@@ -37,7 +37,7 @@
     "typescript": "3.6.2"
   },
   "dependencies": {
-    "@baemingo/tscpaths-async": "^0.0.14",
+    "@baemingo/tscpaths-async": "^0.0.15",
     "lodash": "^4.17.15"
   }
 }
