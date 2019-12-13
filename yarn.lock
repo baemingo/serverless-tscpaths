@@ -18,10 +18,10 @@
     esutils "^2.0.2"
     js-tokens "^4.0.0"
 
-"@baemingo/tscpaths-async@^0.0.14":
-  version "0.0.14"
-  resolved "https://registry.yarnpkg.com/@baemingo/tscpaths-async/-/tscpaths-async-0.0.14.tgz#a50f4cf0dc82a225f7e730580fb1e070cf45e126"
-  integrity sha512-T6K0Bi/9I4o1PAqJfFC8mgNO2tVCIpqU0O6a+RPXqGhsTRuiThB16dvl/Bxqv/FuN5hcsQinnEAb9FlAFmwZQg==
+"@baemingo/tscpaths-async@^0.0.15":
+  version "0.0.15"
+  resolved "https://registry.yarnpkg.com/@baemingo/tscpaths-async/-/tscpaths-async-0.0.15.tgz#df305c2afbf853dc8fd76b02926fb5e67f81278a"
+  integrity sha512-FavCb0PaEROev0paWptEvMnVDpzjet2MuxgN0E6mjU0tUwCVYAhhwBdmAdKj0DyAWbSxFP5lkIPLOT0EddQsDQ==
   dependencies:
     commander "^4.0.1"
     fs-extra "^8.1.0"
