@@ -128,7 +128,7 @@ export class TscPathsPlugin implements Plugin {
 
   private async hook() {
     this.serverless.cli.log('Fixing paths');
-    const flag = this.isDebug && '--verbose';
+    const flag = this.isDebug ? '--verbose' : '';
     const result = await this.exec(
       // tslint:disable-next-line: max-line-length
       `node "${this.tscpathsPath}" -p "${this.tsconfigPath}" -s "${this.rootPath}" -o "${this.buildPath}" ${flag}`,
