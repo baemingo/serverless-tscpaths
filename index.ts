@@ -30,7 +30,7 @@ export class TscPathsPlugin implements Plugin {
         tsconfigPath: 'tsconfig.json',
         tscpathsPath: 'node_modules/@baemingo/tscpaths-async',
       },
-      this.serverless.service.custom.tscpaths,
+      this.serverless.service.custom ? this.serverless.service.custom.tscpaths : {},
     );
 
     this.buildPath = path.join(this.rootPath, config.buildPath);
