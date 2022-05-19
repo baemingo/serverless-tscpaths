@@ -31,6 +31,7 @@ You can specify paths to your build or tsconfig using `custom` section of your `
 ```YAML
 custom:
   tscpaths:
+    sourcePath: src # default is ./
     buildPath: dist # default is .build
     tsconfigPath: tsconfig.es5.json # default is tsconfig.json in the root folder
     tscpathsPath: node_modules/@baemingo/tscpaths-async # if you want to use different lib

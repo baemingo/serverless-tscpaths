@@ -13,6 +13,7 @@ export class TscPathsPlugin implements Plugin {
   private rootPath: string;
   private tscpathsPath: string;
   private tsconfigPath: string;
+  private sourcePath: string;
   private buildPath: string;
   private isDebug: boolean;
   private isWatching: boolean = false;
@@ -26,12 +27,15 @@ export class TscPathsPlugin implements Plugin {
     this.rootPath = this.serverless.config.servicePath;
     const config = _.merge(
       {
+        sourcePath: './',
         buildPath: '.build',
         tsconfigPath: 'tsconfig.json',
         tscpathsPath: 'node_modules/@baemingo/tscpaths-async',
       },
       this.serverless.service.custom ? this.serverless.service.custom.tscpaths : {},
     );
+
+    this.sourcePath = path.join(this.rootPath, config.sourcePath);
 
     this.buildPath = path.join(this.rootPath, config.buildPath);
 
@@ -92,7 +96,7 @@ export class TscPathsPlugin implements Plugin {
   private getFilesPaths(): string[] {
     return this.serverless.service
       .getAllFunctions()
-      .map(fn => this.serverless.service.getFunction(fn).handler)
+      .map((fn) => this.serverless.service.getFunction(fn).handler)
       .reduce((acc, h) => {
         const fnName = _.last(h.split('.'));
         const fnNameLastAppearanceIndex = h.lastIndexOf(fnName!);
@@ -112,7 +116,7 @@ export class TscPathsPlugin implements Plugin {
   private watchFiles(cb: () => void) {
     const watchedFiles = this.getFilesPaths();
 
-    watchedFiles.forEach(fileName => {
+    watchedFiles.forEach((fileName) => {
       fs.watchFile(fileName, { persistent: true, interval: 250 }, watchCallback);
     });
 
@@ -131,7 +135,7 @@ export class TscPathsPlugin implements Plugin {
     const flag = this.isDebug ? '--verbose' : '';
     const result = await this.exec(
       // tslint:disable-next-line: max-line-length
-      `node "${this.tscpathsPath}" -p "${this.tsconfigPath}" -s "${this.rootPath}" -o "${this.buildPath}" ${flag}`,
+      `node "${this.tscpathsPath}" -p "${this.tsconfigPath}" -s "${this.sourcePath}" -o "${this.buildPath}" ${flag}`,
     );
 
     this.serverless.cli.log('Paths fixed');
@@ -145,7 +149,7 @@ export class TscPathsPlugin implements Plugin {
     });
 
     return new Promise((resolve, reject) => {
-      child.on('close', code => {
+      child.on('close', (code) => {
         code ? reject(code) : resolve();
       });
     });
